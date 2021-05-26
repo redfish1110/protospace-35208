@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+
+  <% unless @prototype.like_user(current_user.id).blank? %>
+    <%= link_to prototype_likes_path(prototype_id: @prototype.id, id: @prototype.likes[0].id), class: "like-link",method: :delete, remote: true do %>
+    <%= @prototype.likes.count %>
+    <i class="fa fa-heart  fa-2x unlike-btn"></i>
+    <% end %>
+  <% else %>
+    <%= link_to prototype_likes_path(@prototype.id), class: "like-link", method: :post, remote: true do %>
+    <%= @prototype.likes.count %>
+    <i class="fa fa-heart fa-2x like-btn"></i>
+    <% end %>
+  <% end %>
+<% end %>

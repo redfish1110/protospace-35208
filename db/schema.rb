@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_084455) do
+ActiveRecord::Schema.define(version: 2021_05_26_055002) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2021_04_13_084455) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "prototype_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["prototype_id"], name: "index_likes_on_prototype_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "prototypes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "catch_copy", null: false
@@ -72,5 +81,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_084455) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "prototypes"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "prototypes"
+  add_foreign_key "likes", "users"
   add_foreign_key "prototypes", "users"
 end

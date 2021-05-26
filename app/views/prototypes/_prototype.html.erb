@@ -7,4 +7,13 @@
     </p>
     <%= link_to "by #{prototype.user.name}", user_path(prototype.user), class: :card__user %>
   </div>
+   <div class="card_link">
+      <i class="fa fa-heart unlike-btn fa-2x"></i>
+      <%= prototype.likes.count %>
+      <%= link_to "いいね", prototype_path(prototype.id), class:"like" %>
+
+      <i class="fa fa-comment-o fa-2x"></i>
+      <%= prototype.comments.count %>
+      <%= link_to "コメント", prototype_path(prototype.id),  class:"comment" %>
+    </div>
 </div>

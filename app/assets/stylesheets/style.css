@@ -235,6 +235,24 @@ a {
   text-decoration: underline;
 }
 
+.like-link {
+  text-decoration: none;
+}
+
+.like-link:hover {
+  background-color: #fff!important;
+}
+
+.like-btn {
+  font-size: 15px;
+  color: #808080;
+}
+ 
+.unlike-btn {
+  font-size: 15px;
+  color: #e54747;
+}
+
 /* ユーザーページ */
 .user__wrapper{
   min-height: calc(100vh - 161px);
